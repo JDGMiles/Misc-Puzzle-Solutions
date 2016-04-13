@@ -1,16 +1,11 @@
-#include <iostream>
-#include <math.h>
-#include <string>
+F(x) = sqrt(ax + (n+a)^2 + x(sqrt(a(x+n) + (n+a)^2 + (x+n)(sqrt(...
 
-using namespace std;
+F(x)^2 = ax + (n+a)^2 + x(sqrt(a(x+n) + (n+a)^2 + (x+n)(sqrt(...
 
-int main()
-{
-float Pn=1000;
+F(x)^2 = ax + (n+a)^2 + x(F(x+n))
 
-while(Pn<10000){Pn+=10000/Pn;}
+Apparently this solves to F(x) = x + n + a
 
-cout << Pn/365;
+In the question we have sqrt(100^2 + 101(sqrt(100^2 + 201(sqrt(100^2 + 301(sqrt(100^2 + ...
 
-return 0;
-}
+So a = 0, n = 100, x = 101 and the expression is equal to 201.
