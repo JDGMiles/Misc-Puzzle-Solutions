@@ -1,22 +1,20 @@
 #include <iostream>
 #include <math.h>
-#include <string>
 
 using namespace std;
 
 int main(){
 
-  srand (time(NULL));
-  float snail=0;
+  float snail=1;
   int spring=100;
 
   while(snail<spring){
-    snail++;
     spring++;
     snail=snail*spring/(spring-1);
+    snail++;
   }
 
-  cout << snail << " " << spring;
+  cout << "When the snail has reached " << snail << "cm the spring is " << spring << "cm long.";
 
 
 return 0;
