@@ -28,7 +28,7 @@ var counter=0;
 
 var state=[];
 
-for(i=0; i<4445; i++){state[i]=3;}
+for(i=0; i<4445; i++){state[i]=9;}
 
 for(i=1; i<5; i++){
 	for(j=1; j<5; j++){
@@ -61,14 +61,15 @@ function clicked(n){
 }
 
 function updategrid(){
-	for(h=0; h<4445; h++){if(state[h]==1){state[h]=0;}}
+	for(h=0; h<4445; h++){if(state[h]==1 || state[h]==3){state[h]=0;}}
 	for(h=0; h<4445; h++){
 		if(state[h]==2){
 			for(i=0; i<4; i++){
 				for(j=1; j<4; j++){
 					tempnumber=h+Math.pow(10,i)*j;
 					if(Math.floor((tempnumber%Math.pow(10,i+1))/Math.pow(10,i))>4){tempnumber-=4*Math.pow(10,i);}
-					if(state[tempnumber]!=2){state[tempnumber]=1;}
+					if(state[tempnumber]==1){state[tempnumber]=3;}
+					if(state[tempnumber]==0){state[tempnumber]=1;}
 				}
 			}
 		}
@@ -78,6 +79,7 @@ function updategrid(){
 		if(state[i]==0){document.getElementById(i).style.color="white";}
 		if(state[i]==1){document.getElementById(i).style.color="gray";}
 		if(state[i]==2){document.getElementById(i).style.color="blue";}
+		if(state[i]==3){document.getElementById(i).style.color="red";}
 	}
 }
 
