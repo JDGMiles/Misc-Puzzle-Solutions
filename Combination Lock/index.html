@@ -1,0 +1,34 @@
+<!DOCTYPE html><html>
+
+<head>
+	<title>Working Grid</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body><center>
+
+	<table id="tablecontents" style=""></table>
+
+</center></body>
+</html>
+
+<script type="text/javascript">
+var tablecolumns=16;
+var tablerows=16;
+var tablecontentsmarkup=" ";
+var maxwidth=800;
+var maxheight=500;
+var cellsize=Math.min(Math.floor(maxwidth/tablecolumns), Math.floor(maxheight/tablerows));
+var cellid=0;
+var cellstate=[];
+
+for(i=0; i<tablerows; i++){
+	tablecontentsmarkup=tablecontentsmarkup+"<tr>";
+	for(j=0; j<tablecolumns; j++){
+		tablecontentsmarkup=tablecontentsmarkup+"<td class=\"gridcell\" onclick=\"clicked("+(10*i+j)+")\" id=\""+(10*i+j)+"\" style=\"width:"+cellsize+"px; height:"+cellsize+"px;\">"+(10*i+j)+"</td>";
+	}
+	tablecontentsmarkup=tablecontentsmarkup+"</tr>";
+}
+document.getElementById("tablecontents").innerHTML=tablecontentsmarkup;
+
+</script>
