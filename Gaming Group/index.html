@@ -1,0 +1,115 @@
+<!DOCTYPE html><html><head><title>Tetrahedron Animation</title>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="shortcut icon" href="favicon.ico">
+
+</head>
+
+<body>
+	<center>
+
+		<table style="position:absolute; left:10px; top:10px; background-color:black;">
+			<td>
+				<a href="#popup1"><img title="Information" src="../jdgmiles.github.io/questionmark.png" style="width:60px; height:60px"></a><br>
+				<a href="https://twitter.com/jimdgmiles" target=blank_><img title="James Miles on Twitter" src="../jdgmiles.github.io/twitter.png" style="width:60px; height:60px"></a><br>
+				<a href="http://jdgmiles.github.io/" target="_blank"><img title="Projects Page" src="../jdgmiles.github.io/jdgm.png" style="width:60px; height:60px"></a><br>
+			</td>
+		</table>
+
+		<div id="popup1" class="overlay">
+			<div class="popup">
+				<a class="close" style="right: 30px;" href="#">&times;</a>
+				<div style="font-family:Georgia; color:white; text-align:center; text-decoration:underline; font-size:45px">Tetrahedron Animation</div>
+				<span style="font-family:Georgia; font-size:120px; color:white; text-align:justify;"><a target="_blank" href="http://jdgmiles.tumblr.com/post/124620973515/49-witch-hunt-on-a-tetrahedron">...</a><br></span><br><br>
+			</div>
+		</div>
+
+		<canvas id="canvas" style="padding:0px 80px 0px 80px;"></canvas>
+  </center>
+</body>
+</html>
+
+<script type="text/javascript">
+var field={width:500, height:500};
+var fieldcolor="white";
+var time=0;
+var huntersize=18;
+var hunterborder=9;
+var fps=65;
+var hunter1pos=50;
+var hunter2pos=54;
+var hunter3xpos=250;
+var hunter3ypos=54;
+
+var canvas = document.getElementById("canvas"),
+    ctx = canvas.getContext("2d");
+
+canvas.width = field.width;
+canvas.height = field.height;
+
+function draw(){
+
+ctx.fillStyle=fieldcolor;
+ctx.fillRect(0,0,field.width,field.height);
+
+ctx.beginPath();
+ctx.moveTo(50,400);
+ctx.lineTo(250,54);
+ctx.lineTo(450,400);
+ctx.closePath();
+ctx.strokeStyle="black";
+ctx.lineWidth=9;
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(50,400);
+ctx.lineTo(250,285);
+ctx.moveTo(250,54);
+ctx.lineTo(250,285);
+ctx.moveTo(450,400);
+ctx.lineTo(250,285);
+ctx.closePath();
+ctx.strokeStyle="black";
+ctx.lineWidth=7;
+ctx.stroke();
+
+ctx.beginPath();
+ctx.arc(hunter1pos, 400, huntersize, 0, 2 * Math.PI);
+ctx.fillStyle="#9999FF";
+ctx.lineWidth=hunterborder;
+ctx.strokeStyle="#000099";
+ctx.fill();
+ctx.stroke();
+
+ctx.beginPath();
+ctx.arc(250, hunter2pos, huntersize, 0, 2 * Math.PI);
+ctx.fillStyle="#9999FF";
+ctx.lineWidth=hunterborder;
+ctx.strokeStyle="#000099";
+ctx.fill();
+ctx.stroke();
+
+ctx.beginPath();
+ctx.arc(hunter3xpos, hunter3ypos, huntersize, 0, 2 * Math.PI);
+ctx.fillStyle="#FF9999";
+ctx.lineWidth=hunterborder;
+ctx.strokeStyle="#990000";
+ctx.fill();
+ctx.stroke();
+
+time++;
+if(time<101 && time>0){hunter1pos=50+Math.floor(400*time/100); hunter3xpos=250+Math.floor(200*time/100); hunter3ypos=54+Math.floor(346*time/100);}
+if(time>200 && time<301){hunter1pos=450-Math.floor(400*(time-200)/100); hunter3xpos=250-Math.floor(200*(time-200)/100); hunter3ypos=285+Math.floor(115*(time-200)/100);}
+
+if(time<201 && time>100){hunter2pos=54+Math.floor(231*(time-100)/100); hunter3xpos=450-Math.floor(200*(time-100)/100); hunter3ypos=400-Math.floor(115*(time-100)/100);}
+if(time<401 && time>300){hunter2pos=285-Math.floor(231*(time-300)/100); hunter3xpos=50+Math.floor(200*(time-300)/100); hunter3ypos=400-Math.floor(346*(time-300)/100);}
+
+if(time>400){time=0;}
+
+setTimeout(draw, Math.floor(1000/fps));
+
+}
+
+draw();
+
+</script>
