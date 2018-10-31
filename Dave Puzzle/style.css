@@ -3,11 +3,19 @@
 @font-face {font-family: Liberation Serif Italic; src: url(../jdgmiles.github.io/LiberationSerif-Italic.woff);}
 @font-face {font-family: Liberation Serif Bold Italic; src: url(../jdgmiles.github.io/LiberationSerif-BoldItalic.woff);}
 
-body {font-family: Liberation Serif, Tahoma, Arial, Helvetica, Sans-Serif; background-color:black; color:white; cursor:default; text-align:center;}
+body {font-family: Liberation Serif, Tahoma, Arial, Helvetica, Sans-Serif; background-color:black; color:black; cursor:default; text-align:center;}
 
 a:link {color:#CF0000; text-decoration: none;}
 a:link:hover {text-decoration:underline}
 a:visited {color:#CF0000;}
+
+.maintable {border: 1px solid black; background:url("Bingo Card.png") no-repeat; width:1182px; height:615px;}
+
+.bingoblock {height:50px; width:120px; color:white; -webkit-text-stroke-width:2px; -webkit-text-stroke-color:black; font-size:70px}
+.dividerblock {width:90px; height:50px; border: 1px solid black;}
+.prizeblock {width:150px; height:50px; color:white; -webkit-text-stroke-width:2px; -webkit-text-stroke-color:black; font-size:70px}
+
+.buybutton, .resetbutton, .tixbutton {font-size:40px; font-family: Liberation Serif, Tahoma, Arial, Helvetica, Sans-Serif;}
 
 .container {
     position: absolute;

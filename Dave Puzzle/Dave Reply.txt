@@ -1,0 +1,113 @@
+This is a really neat idea for a promotion. Let's see if I understand it right:
+
+There are 35 different types of stickers.
+
+Customers get a bingo card with 35 spaces corresponding to the types of sticker.
+
+As they collect stickers, they stick them on the card in the corresponding place.
+
+At the end of the promotion they cash in the card and any completed lines win them a prize for that line.
+
+The stickers are printed at different rarities so some lines are harder to get than others.
+
+---
+
+If I understand correctly from what you've said about the probabilities, you would print the stickers in something equivalent to the following six groups:
+
+Group 1 (35 total):
+1 of each "common" (=28)
+1 Prodigy Coffee
+1 Monarch Toilet Rolls
+1 Microwaveable Takeaway Containers
+1 Supersuds
+1 Blue HD Wipes
+1 M2 Dishwasher
+1 Sapiens Combi-Steamer Oven
+
+Group 2 (34 total):
+1 of each "common" (=28)
+1 Prodigy Coffee
+1 Monarch Toilet Rolls
+1 Microwaveable Takeaway Containers
+1 Supersuds
+1 Blue HD Wipes
+1 M2 Dishwasher
+
+Group 3 (29 total):
+1 of each "common" (=28)
+1 Microwaveable Takeaway Containers
+
+Group 4 (28 total): 
+1 of each "common" (=28)
+
+Group 5 (28 total): 
+1 of each "common" (=28)
+
+Group 6 (28 total): 
+1 of each "common" (=28)
+
+That gives you what you described, with - for example - "Supersuds" appearing in exactly two of the groups, and Sapiens Combi-Steamer Oven only appearing in one of them, etc.
+
+---
+
+If what I've written above is a correct understanding of how you intend to do this promotion then the next thing to consider is the probabilities.
+
+In the above 6 groups you have a total of 182 stickers being printed. Of course, you would print many batches of that 182, on repeat, but from the point of view of probability we can work with just one batch since it scales the same no matter how many repeated batches you print.
+
+Within one batch of 182, 
+
+You have 6 printings of each common so if you receive a sticker at random the chance of it being a specific common (for example "4-Cup Carry Tray") is 6/182.
+
+You have 3 printings of Microwaveable Takeaway Containers so if you receive a sticker at random the chance of it being Microwaveable Takeaway Containers is 3/182.
+
+You have 2 printings of Prodigy Coffee so if you receive a sticker at random the chance of it being Prodigy Coffee is 2/182.
+
+Same for the other items that have 2 printings per batch (Monarch Toilet Rolls, Supersuds, Blue HD Wipes, M2 Dishwasher).
+
+There is only one Sapiens Combi-Steamer Oven, so the chance of getting that from a random sticker is 1/182.
+
+---
+
+With these probabilities we might be able to answer your first question.
+
+You ask "Assuming the stickers are randomised, how many stickers will someone need to receive before they win the prize for a given row?"
+
+The issue here is that you are presumably printing quite a large amount of stickers so when someone receives a sticker sure they take it out of the "pool" but that doesn't really change the probabilities. It doesn't make it more likely that their next sticker will be something different. If you only printed 182 stickers and only had one customer then as they bought more and more items they would eventually begin to exhaust that pool of 182 stickers and quickly become guaranteed of winning a prize. But I assume you would print many thousands of stickers and have many hundreds of customers so in theory, a customer could just keep getting - for example - "Milk Jugs" over and over again. It is possible they could go a long time without ever completing a row. It's a bit like if you roll a dice until you've seen all the numbers; you could well roll it more than 30 times before you see your first 6.
+
+So in Mathematics with this type of problem we are generally more interested in the "expected" value. In this case that is the number of stickers we "expect" someone to have to receive before they win a prize by completing a line on the bingo card.
+
+The basic case of this is the famous "coupon collector's problem" (https://en.wikipedia.org/wiki/Coupon_collector%27s_problem) which does have a solution, but it is not a particularly helpful one here because your promotion is more complicated than just trying to collect all the stickers - in your promotion not only do the stickers have different probabilities, but you also have a more interesting way that they must be collected in "lines" rather than just getting at least one of each.
+
+So...to work out the expected number of stickers someone will need to receive in order to win something in your promotion we are probably better off writing a simulation.
+
+Which I've done!
+
+Here!
+
+You can see the bingo card, and when you press the button you get a new sticker and it adds it on the card in the right place. It keeps track of how many stickers you've won, so you can pretend you are participating in the promotion and see how many stickers you would need to collect to fill out a line.
+
+That's neat and all, but to get an estimate for the expected amount of stickers someone would have to win to get a prize we really want to run that simulation millions of times and keep track of the data.
+
+Well...I did just that, and here are the results.
+
+You can see that on average.
+
+---
+
+Everything above assumes a large and steady supply of stickers where the probability doesn't change from a customer playing the game. You print loads of stickers, randomise them, and taking one out of the pool doesn't change the probability meaningfully for the next sticker picked.
+
+This relates to your second question because if you don't rigorously randomise the stickers before putting them on products then for sure things do change quite a bit. Imagine you print your batch of 182 stickers and don't randomise them at all, just putting them on items in the order you printed them. Well in that case someone who buys 182 items in one go will get a complete batch from you and be able to complete an entire bingo card. Which may not be what you want.
+
+So I would absolutely recommend some way of randomising the stickers after they have been printed so that when a customer buys an item the sticker they receive truly is random and not mappable, predictable, or otherwise open to "gaming" the system.
+
+That issue of predictable outcomes is a classic in cases where people have been able to exploit these types of games. In Magic: the Gathering cards are printed in very much the way we have been discussing (like your "batch" of 182) and it was possible to "map" the contents of a box by opening a few boosters which would demonstrate where in the print run the box had been taken, and so the rest of the contents could be deduced. I believe that there have also been issues like this with scratchcards for Lotto and promotional games like this one.
+
+So...yeah, I would absolutely try to make sure that your stickers are thoroughly randomised before they are distributed. You never know how clever people might be able to fiddle it and nab that Merrychef High-Speed Oven.
+
+---
+
+I hope this has been helpful. Feel free to follow up if I misunderstood anything or something I said didn't make sense. Hopefully I got a good handle on the promotion and the simulation was fun to play. It may be that you wish to tweak the probabilities a bit, in which case I can gladly make you an interactive page to run many simulations on different distributions and output approximate expectations.
+
+All the best,
+
+-J
