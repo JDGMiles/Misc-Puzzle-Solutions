@@ -68,7 +68,7 @@ There is only one Sapiens Combi-Steamer Oven, so the chance of getting that from
 
 ---
 
-With these probabilities we might be able to answer your first question.
+With these probabilities we might be able to tackle your first question.
 
 You ask "Assuming the stickers are randomised, how many stickers will someone need to receive before they win the prize for a given row?"
 
@@ -80,23 +80,29 @@ The basic case of this is the famous "coupon collector's problem" (https://en.wi
 
 So...to work out the expected number of stickers someone will need to receive in order to win something in your promotion we are probably better off writing a simulation.
 
-Which I've done!
-
-Here!
+Which I've done here!
 
 You can see the bingo card, and when you press the button you get a new sticker and it adds it on the card in the right place. It keeps track of how many stickers you've won, so you can pretend you are participating in the promotion and see how many stickers you would need to collect to fill out a line.
 
-That's neat and all, but to get an estimate for the expected amount of stickers someone would have to win to get a prize we really want to run that simulation millions of times and keep track of the data.
+Have a play with it and see what you notice.
 
-Well...I did just that, and here are the results.
+It takes quite a lot of random stickers to complete a line, right? And also it's really high variance. Like, sometimes you get a line in your first 30 stickers, but sometimes it takes 100 or more.
 
-You can see that on average.
+Maybe that's what you want.
+
+So the next thing is that to get an estimate for the expected amount of stickers to complete a line we really want to run that simulation millions of times and keep track of the data.
+
+I can write a program to do that for you and let you know what I find, but for now I figured I'd just share the basic simulation to check we're talking about the same thing and I haven't misunderstood anything.
+
+You can of course get your own estimate just by playing my simulation a load and noting down how long it takes you to complete lines.
 
 ---
 
+Onto question 2.
+
 Everything above assumes a large and steady supply of stickers where the probability doesn't change from a customer playing the game. You print loads of stickers, randomise them, and taking one out of the pool doesn't change the probability meaningfully for the next sticker picked.
 
-This relates to your second question because if you don't rigorously randomise the stickers before putting them on products then for sure things do change quite a bit. Imagine you print your batch of 182 stickers and don't randomise them at all, just putting them on items in the order you printed them. Well in that case someone who buys 182 items in one go will get a complete batch from you and be able to complete an entire bingo card. Which may not be what you want.
+This relates to the second question because if you don't rigorously randomise the stickers before putting them on products then for sure things do change quite a bit. Imagine you print your batch of 182 stickers and don't randomise them at all, just putting them on items in the order you printed them. Well in that case someone who buys 182 items in one go will get a complete batch from you and be able to complete an entire bingo card. Which may not be what you want.
 
 So I would absolutely recommend some way of randomising the stickers after they have been printed so that when a customer buys an item the sticker they receive truly is random and not mappable, predictable, or otherwise open to "gaming" the system.
 
