@@ -22,7 +22,7 @@ function takesticker() {
   document.getElementById(n+1).style.color="red";
   for (i=0; i<5; i++){prizecount[i]=Math.min(stickercount[7*i], stickercount[7*i+1], stickercount[7*i+2], stickercount[7*i+3], stickercount[7*i+4], stickercount[7*i+5], stickercount[7*i+6]);}
   for (i=0; i<5; i++){document.getElementById("P"+(i+1)).innerHTML=prizecount[i];}
-  document.getElementById('tix').innerHTML="Taken Tickets: "+takentix;
+  document.getElementById('tix').innerHTML="Taken Stickers: "+takentix;
 }
 
 function reset() {
@@ -31,5 +31,5 @@ function reset() {
   for (i=0; i<5; i++){prizecount[i]=0;}
   for (i=0; i<5; i++){document.getElementById("P"+(i+1)).innerHTML=prizecount[i];}
   takentix=0;
-  document.getElementById('tix').innerHTML="Taken Tickets: "+takentix;
+  document.getElementById('tix').innerHTML="Taken Stickers: "+takentix;
 }
