@@ -1,0 +1,13 @@
+DRn is the chance of losing if you go first in a Dn game of DeathRoll
+
+DR1 = 1
+DR2 = (1/2)(1 + 1-DR2) = 2/3
+DR3 = (1/3)(1 + 1-DR2 + 1-DR3) = (2/3)DR2 + (1/3)(1-DR3)
+...
+DRN = (1/N)(1 + 1-DR2 + 1-DR3 + ... + 1-DRN)
+DR[N+1] = (1/(N+1))(1 + 1-DR2 + 1-DR3 + ... + 1-DRN + 1-DR[N+1]) = (1/(N+1))((N)DRN + 1-DR[N+1])
+
+(N+1)DR[N+1] = (N)DRN + 1-DR[N+1]
+(N+2)DR[N+1] = (N)DRN + 1
+
+DR[N+1] = ((N)DRN + 1)/(N+2) 
